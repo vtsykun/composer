@@ -243,9 +243,7 @@ class Git
             try {
                 $commandCallable = function ($url) {
                     $url = $this->wrapperAlias($url);
-                    return sprintf('git remote set-url origin %s && git remote update --prune origin', ProcessExecutor::escape($url));
                     $sanitizedUrl = preg_replace('{://([^@]+?):(.+?)@}', '://', $url);
-
                     return sprintf('git remote set-url origin %s && git remote update --prune origin && git remote set-url origin %s', ProcessExecutor::escape($url), ProcessExecutor::escape($sanitizedUrl));
                 };
                 $this->runCommand($commandCallable, $url, $dir);

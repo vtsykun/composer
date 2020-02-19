@@ -130,7 +130,7 @@ class GitDownloader extends VcsDownloader implements DvcsDownloaderInterface
 
         $commandCallable = function ($url) use ($command, $ref) {
             $url = $this->gitUtil->wrapperAlias($url);
-            return sprintf($command, ProcessExecutor::escape($url), ProcessExecutor::escape($ref.'^{commit}'));
+
             return sprintf(
                 $command,
                 ProcessExecutor::escape($url),
